@@ -1,12 +1,16 @@
 import React from "react";
-import Header from "./components/Header";
-import Main from "./components/Main";
+import Header from "./components/global/Header";
+import Main from "./components/global/Main";
+import AsideNav from "./components/global/AsideNav";
 
 function App() {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen  bg-primary-content">
       <Header />
-      <Main />
+      <section className="h-full w-full flex">
+        <AsideNav />
+        <Main />
+      </section>
     </div>
   );
 }

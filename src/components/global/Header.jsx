@@ -48,7 +48,7 @@ const Header = () => {
       </div>
       <div className="navbar-end flex-1 lg:hidden">
         <div className="dropdown dropdown-end ">
-          <div tabIndex="0" className="btn btn-ghost m-1">
+          <div tabIndex="0" className="btn btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -64,9 +64,9 @@ const Header = () => {
               />
             </svg>
           </div>
-          <ul className="dropdown-content bg-white text-black w-56 rounded px-3 py-2 space-y-3">
+          <ul className=" bg-white text-black w-56 rounded px-3 py-2 space-y-3">
             <li>
-              <Link to="/" className="block text-lg font-bold">
+              <Link to="/" className=" text-lg font-bold">
                 Home
               </Link>
             </li>
@@ -77,7 +77,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/platforms" className="block">
+              <Link to="/platforms" className="">
                 Platforms
               </Link>
             </li>

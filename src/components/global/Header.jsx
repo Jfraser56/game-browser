@@ -15,11 +15,13 @@ const Header = () => {
   ];
 
   return (
-    <nav className="navbar bg-transparent py-5">
+    <nav className="navbar bg-transparent p-8">
       <div className="navbar-start flex-1">
-        <h1 className="text-md lg:text-3xl font-bold text-white px-5">
-          GameRev.
-        </h1>
+        <Link to={"/"}>
+          <h1 className="text-md lg:text-3xl font-bold text-secondary px-5">
+            GameRev.
+          </h1>
+        </Link>
       </div>
       <div className="navbar-center flex-auto">
         <div className="input-group input-group-xs lg:input-group-lg">

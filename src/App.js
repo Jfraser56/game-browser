@@ -5,7 +5,7 @@ import AsideNav from "./components/global/AsideNav";
 
 function App() {
   return (
-    <div className="flex flex-col h-screen  bg-primary-content">
+    <div className="flex flex-col bg-primary-content">
       <Header />
       <section className="h-full w-full flex">
         <AsideNav />

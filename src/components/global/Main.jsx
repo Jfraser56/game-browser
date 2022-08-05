@@ -10,7 +10,7 @@ import Developers from "../../pages/Developers";
 
 const Main = () => {
   return (
-    <div className="bg-red-300 w-full lg:w-[calc(100%_-_15rem)]">
+    <div className="w-full h-screen pl-8 lg:w-[calc(100%_-_15rem)]">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/discover" element={<Home />} />

@@ -1,25 +1,20 @@
-import React from "react";
+import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import MobileNavigation from "../MobileNavigation";
+import { openModal } from "../../features/modal/modalSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
-  const genres = [
-    { url: "/games/action", label: "Action" },
-    { url: "/games/adventure", label: "Adventure" },
-    { url: "/games/puzzle", label: "Puzzle" },
-    { url: "/games/racing", label: "Racing" },
-    { url: "/games/role-playing-games", label: "RPG" },
-    { url: "/games/shooters", label: "Shooter" },
-    { url: "/games/sports-games", label: "Sports" },
-    { url: "/games/strategy-games", label: "Strategy" },
-  ];
+  const dispatch = useDispatch();
+  const { isOpen } = useSelector((store) => store.modal);
 
   return (
-    <nav className="navbar bg-transparent p-8">
+    <nav className="navbar bg-transparent p-4 pb-8">
       <div className="navbar-start flex-1">
         <Link to={"/"}>
-          <h1 className="text-md lg:text-3xl font-bold text-secondary px-5">
-            GameRev.
+          <h1 className="text-md p-2 lg:text-2xl text-white font-bold tracking-wider">
+            GAME.REV
           </h1>
         </Link>
       </div>
@@ -46,68 +41,29 @@ const Header = () => {
           Resume
         </a>
       </div>
+      {/* Only on Small Screens */}
       <div className="navbar-end flex-1 lg:hidden">
-        <div className="dropdown dropdown-end ">
-          <div tabIndex="0" className="btn btn-ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
-              />
-            </svg>
-          </div>
-          <ul className=" bg-white text-black w-56 rounded px-3 py-2 space-y-3">
-            <li>
-              <Link to="/" className=" text-lg font-bold">
-                Home
-              </Link>
-            </li>
-            <li className="h-[1px] bg-gray-100 rounded-full"></li>
-            <li>
-              <Link to="/games" className="block text-lg font-bold">
-                Browse Games
-              </Link>
-            </li>
-            <li>
-              <Link to="/platforms" className="">
-                Platforms
-              </Link>
-            </li>
-            <li>
-              <Link to="/stores" className="block">
-                Stores
-              </Link>
-            </li>
-            <li>
-              <Link to="/developers" className="block">
-                Developers
-              </Link>
-            </li>
-
-            <li className=" h-[1px] bg-gray-100 rounded-full"></li>
-
-            <li>
-              <Link to="/genres" className="block text-lg font-bold">
-                Genres
-              </Link>
-            </li>
-            {genres.map((item, index) => (
-              <li key={index}>
-                <Link to={item.url} className="block">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div
+          onClick={() => dispatch(openModal())}
+          tabIndex="0"
+          className="btn btn-ghost"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h7"
+            />
+          </svg>
         </div>
+        {isOpen && <MobileNavigation />}
       </div>
     </nav>
   );

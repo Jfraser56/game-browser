@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../../pages/Home";
 import Discover from "../../pages/Discover";
 import Calendar from "../../pages/Calendar";
 import Games from "../../pages/Games";
@@ -10,13 +9,14 @@ import Developers from "../../pages/Developers";
 
 const Main = () => {
   return (
-    <div className="w-full h-screen pl-8 lg:w-[calc(100%_-_15rem)]">
+    <div className="w-full h-screen px-9 lg:w-[calc(100%_-_15rem)]">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/discover" element={<Home />} />
+        <Route path="/" element={<Discover />} />
+        <Route path="/discover" element={<Discover />} />
         <Route path="/discover/:id" element={<Discover />} />
         <Route path="/release-calendar" element={<Calendar />} />
-        <Route path="/browse" element={<Games />} />
+        <Route path="/games" element={<Games />} />
+        <Route path="/games/:id" element={<Games />} />
         <Route path="/platforms" element={<Platforms />} />
         <Route path="/stores" element={<Stores />} />
         <Route path="/developers" element={<Developers />} />

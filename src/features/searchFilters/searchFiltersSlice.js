@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  orderBy: "Popularity",
+  orderBy: "popularity",
   platforms: "",
   releaseDate: "",
 };
@@ -20,6 +20,7 @@ const searchFiltersSlice = createSlice({
       state.releaseDate = payload;
     },
   },
+  extraReducers: (builder) => {},
 });
 
 export const {

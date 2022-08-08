@@ -1,5 +1,5 @@
-import React from "react";
 import FilterBar from "../components/shared/FilterBar";
+import CardGrid from "../components/shared/CardGrid";
 import { useParams } from "react-router-dom";
 
 const Discover = () => {
@@ -16,6 +16,7 @@ const Discover = () => {
         {id ? titles[id] : "Best of 2022"}
       </h1>
       <FilterBar />
+      <CardGrid />
     </div>
   );
 };

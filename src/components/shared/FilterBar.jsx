@@ -25,7 +25,7 @@ const FilterBar = ({ releaseDateFilter }) => {
         >
           <option value="added">Date added</option>
           <option value="name">Name</option>
-          <option value="popuarity">Popularity</option>
+          <option value="popularity">Popularity</option>
           <option value="rating">Average Rating</option>
         </select>
       </div>

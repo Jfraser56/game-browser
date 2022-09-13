@@ -5,6 +5,7 @@ import Games from "../../pages/Games";
 import Platforms from "../../pages/Platforms";
 import Stores from "../../pages/Stores";
 import Developers from "../../pages/Developers";
+import NotFound from "../../pages/NotFound";
 
 const Main = () => {
   // const firstOfYear = new Date(new Date().getFullYear(), 0, 1)
@@ -14,7 +15,7 @@ const Main = () => {
   //Clears release date filter useEffect?
 
   return (
-    <div className="hide-scrollbar w-full h-auto lg:h-[60rem] px-9 lg:w-[calc(100%_-_15rem)] overflow-y-scroll">
+    <div className="hide-scrollbar w-full h-auto lg:h-[60rem] px-4 md:px-9 lg:w-[calc(100%_-_15rem)] overflow-y-scroll">
       <Routes>
         <Route path="/" element={<Discover />} />
         <Route path="/discover" element={<Discover />} />
@@ -25,6 +26,7 @@ const Main = () => {
         <Route path="/platforms" element={<Platforms />} />
         <Route path="/stores" element={<Stores />} />
         <Route path="/developers" element={<Developers />} />
+        <Route path="/not-found" element={<NotFound />} />
       </Routes>
     </div>
   );

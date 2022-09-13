@@ -19,9 +19,9 @@ const MobileNavigation = () => {
   return (
     <div
       onClick={() => dispatch(closeModal())}
-      className="fixed top-0 right-0 left-0 bottom-0 bg-black/60"
+      className="fixed top-0 right-0 left-0 bottom-0 z-20 bg-black/60"
     >
-      <ul className="absolute top-20 right-0 z-10 h-3/4 overflow-y-scroll bg-white text-black w-56 rounded-lg px-3 py-2 space-y-3">
+      <ul className="absolute top-20 right-0 h-3/4 overflow-y-scroll bg-white text-black w-56 rounded-lg px-3 py-2 space-y-3">
         <li>
           <Link to="/" className="block text-lg font-bold">
             Home

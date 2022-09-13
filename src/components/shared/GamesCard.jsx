@@ -13,8 +13,8 @@ const GamesCard = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="transition relative hover:z-10 hover:scale-105 group">
-      <div className="card h-72 hover:h-96 bg-base-100 hover:absolute top-0 left-0 right-0">
+    <div className="transition relative md:hover:z-10 md:hover:scale-105 group">
+      <div className="card h-72 md:hover:h-96 bg-base-100 md:hover:absolute top-0 left-0 right-0">
         <figure className="h-36 w-full bg-[url(https://media.rawg.io/media/crop/600/400/games/cd3/cd3c9c7d3e95cb1608fd6250f1b90b7a.jpg)] bg-center bg-cover"></figure>
         <main className="py-2 px-5">
           <div className="flex items-center justify-between w-full h-8">
@@ -62,7 +62,7 @@ const GamesCard = () => {
               Adventure
             </Link>
           </header>
-          <article className="mt-5 space-y-5 text-sm hidden group-hover:block">
+          <article className="mt-5 space-y-5 text-sm hidden md:group-hover:block">
             <div className="flex justify-between items-center pb-1 border-b border-white/10">
               Release Date <span>July, 7 2022</span>
             </div>

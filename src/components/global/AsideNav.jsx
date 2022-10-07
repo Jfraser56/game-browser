@@ -36,14 +36,14 @@ const AsideNav = () => {
   ];
 
   const navList3 = [
-    { icon: actionIcon, url: "games/action", type: "Action" },
-    { icon: adventureIcon, url: "games/adventure", type: "Adventure" },
-    { icon: puzzleIcon, url: "games/puzzle", type: "Puzzle" },
-    { icon: racingIcon, url: "games/racing", type: "Racing" },
-    { icon: rpgIcon, url: "games/role-playing-games", type: "RPG" },
-    { icon: shooterIcon, url: "games/shooters", type: "Shooter" },
-    { icon: sportsIcon, url: "games/sports-games", type: "Sports" },
-    { icon: strategyIcon, url: "games/strategy-games", type: "Strategy" },
+    { icon: actionIcon, url: "games/genres/action", type: "Action" },
+    { icon: adventureIcon, url: "games/genres/adventure", type: "Adventure" },
+    { icon: puzzleIcon, url: "games/genres/puzzle", type: "Puzzle" },
+    { icon: racingIcon, url: "games/genres/racing", type: "Racing" },
+    { icon: rpgIcon, url: "games/genres/RPG", type: "RPG" },
+    { icon: shooterIcon, url: "games/genres/shooters", type: "Shooters" },
+    { icon: sportsIcon, url: "games/genres/sports", type: "Sports" },
+    { icon: strategyIcon, url: "games/genres/strategy", type: "Strategy" },
   ];
 
   return (

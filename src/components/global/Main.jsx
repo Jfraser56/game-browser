@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Discover from "../../pages/Discover";
 import Calendar from "../../pages/Calendar";
 import Games from "../../pages/Games";
@@ -8,12 +8,6 @@ import Developers from "../../pages/Developers";
 import NotFound from "../../pages/NotFound";
 
 const Main = () => {
-  // const firstOfYear = new Date(new Date().getFullYear(), 0, 1)
-  //   .toISOString()
-  //   .split("T")[0];
-
-  //Clears release date filter useEffect?
-
   return (
     <div className="hide-scrollbar w-full h-auto lg:h-[60rem] px-4 md:px-9 lg:w-[calc(100%_-_15rem)] overflow-y-scroll">
       <Routes>
@@ -22,11 +16,12 @@ const Main = () => {
         <Route path="/discover/:id" element={<Discover />} />
         <Route path="/release-calendar" element={<Calendar />} />
         <Route path="/games" element={<Games />} />
-        <Route path="/games/:id" element={<Games />} />
+        <Route path="/games/:filter/:id" element={<Games />} />
         <Route path="/platforms" element={<Platforms />} />
         <Route path="/stores" element={<Stores />} />
         <Route path="/developers" element={<Developers />} />
         <Route path="/not-found" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

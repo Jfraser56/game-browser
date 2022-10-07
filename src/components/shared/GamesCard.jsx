@@ -50,13 +50,13 @@ const GamesCard = () => {
               </h1>
             </div>
             <Link
-              to="/games/action"
+              to="/games/genres/action"
               className="badge badge-outline hover:badge-outline hover:badge-info text-white mr-2"
             >
               Action
             </Link>
             <Link
-              to="/games/adventure"
+              to="/games/genres/adventure"
               className="badge badge-outline hover:badge-outline hover:badge-info text-white"
             >
               Adventure

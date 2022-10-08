@@ -2,7 +2,7 @@ import React from "react";
 
 const LoaderGrid = () => {
   return (
-    <div class="loader-grid">
+    <div className="loader-grid ">
       <div></div>
       <div></div>
       <div></div>

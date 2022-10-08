@@ -5,12 +5,11 @@ import { useParams } from "react-router-dom";
 import CardGrid from "../components/shared/CardGrid";
 import { useEffect } from "react";
 import {
-  updateReleaseDate,
   fetchGames,
   updateGenres,
-  updatePlatforms,
-  updateStores,
-  updateDevelopers,
+  updatePlatformsByID,
+  updateStoresByID,
+  updateDevelopersByID,
   resetStore,
 } from "../features/fetchedData/fetchedDataSlice";
 
@@ -33,19 +32,19 @@ const Games = () => {
         dispatch(updateGenres(id));
         return;
       case "platforms":
-        dispatch(updatePlatforms(id));
+        dispatch(updatePlatformsByID(id));
         return;
       case "stores":
-        dispatch(updateStores(id));
+        dispatch(updateStoresByID(id));
         return;
       case "developers":
-        dispatch(updateDevelopers(id));
+        dispatch(updateDevelopersByID(id));
         return;
     }
   }, [id]);
 
   useEffect(() => {
-    if (genres) {
+    const fetchGameData = () => {
       dispatch(
         fetchGames({
           orderBy,
@@ -56,8 +55,33 @@ const Games = () => {
           developers,
         })
       );
+    };
+
+    //Makes sure store has genres, platforms, stores, or developer data before fetch request is sent
+    switch (filter) {
+      case "genres":
+        if (genres) {
+          fetchGameData();
+        }
+        return;
+      case "platforms":
+        if (platforms) {
+          fetchGameData();
+        }
+        return;
+      case "stores":
+        if (stores) {
+          fetchGameData();
+        }
+        return;
+      case "developers":
+        if (developers) {
+          fetchGameData();
+        }
+        return;
     }
   }, [orderBy, platforms, releaseDate, genres, stores, developers]);
+
   return (
     <div>
       <h1 className="text-4xl text-center md:text-7xl md:text-left font-bold text-white">

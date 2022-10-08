@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { platformIDs, genreIDs } from "./API_IDs";
+import { dummyData } from "../../dummydata";
 
 const initialState = {
   orderBy: "popularity",
@@ -15,19 +16,17 @@ const initialState = {
   error: "",
 };
 
-//Query params are dependent on where the fetch is being requested from ie. genres page vs. platforms page
+//Query params are dependent on where the fetch is being requested from ie. discover page vs. games page
 export const fetchGames = createAsyncThunk(
   "fetchedData/fetchGames",
   async ({ platforms, orderBy, releaseDate, genres, stores, developers }) => {
-    const games = await axios(
-      `https://api.rawg.io/api/games?ordering=${orderBy}&dates=${releaseDate}&platforms=${platforms}&page=${
-        initialState.page
-      }${genres ? `&genres=${genres}` : ""}${
-        stores ? `&stores=${stores}` : ""
-      }${developers ? `&developers=${developers}` : ""}&page-size=20&key=${
-        process.env.REACT_APP_GAMELIB_API_KEY
-      }`
-    );
+    const url = `https://api.rawg.io/api/games?ordering=${orderBy}&dates=${releaseDate}&platforms=${platforms}&page=${
+      initialState.page
+    }${genres ? `&genres=${genres}` : ""}${stores ? `&stores=${stores}` : ""}${
+      developers ? `&developers=${developers}` : ""
+    }&page-size=20&key=${process.env.REACT_APP_GAMELIB_API_KEY}`;
+
+    const games = await axios(url);
     return games.data;
   }
 );
@@ -36,10 +35,13 @@ const fetchedDataSlice = createSlice({
   name: "fetchedData",
   initialState,
   reducers: {
-    updateOrderBy: (state, { payload }) => {
+    updateOrderByWithFilterBar: (state, { payload }) => {
       state.orderBy = payload;
     },
-    updatePlatforms: (state, { payload }) => {
+    updatePlatformsWithFilterBar: (state, { payload }) => {
+      state.platforms = payload;
+    },
+    updatePlatformsByID: (state, { payload }) => {
       state.platforms = platformIDs[payload];
     },
     updateReleaseDate: (state, { payload }) => {
@@ -48,15 +50,15 @@ const fetchedDataSlice = createSlice({
     updateGenres: (state, { payload }) => {
       state.genres = genreIDs[payload];
     },
-    updateStores: (state, { payload }) => {
+    updateStoresByID: (state, { payload }) => {
       state.stores = payload;
     },
-    updateDevelopers: (state, { payload }) => {
+    updateDevelopersByID: (state, { payload }) => {
       state.developers = payload;
     },
     resetStore: (state) => {
       state.orderBy = "popularity";
-      state.platforms = "187,18,16,15,27,186,1,14,80,4,7,8,83,11";
+      state.platforms = platformIDs.all;
       state.releaseDate = "";
       state.genres = "";
       state.stores = "";
@@ -90,15 +92,18 @@ export const {
   platforms,
   releaseDate,
   genres,
+  loading,
+  gameData,
 } = (state) => state.fetchedData;
 
 export const {
-  updateOrderBy,
-  updatePlatforms,
+  updateOrderByWithFilterBar,
+  updatePlatformsWithFilterBar,
+  updatePlatformsByID,
   updateReleaseDate,
   updateGenres,
-  updateStores,
-  updateDevelopers,
+  updateStoresByID,
+  updateDevelopersByID,
   resetStore,
 } = fetchedDataSlice.actions;
 

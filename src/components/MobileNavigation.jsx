@@ -21,15 +21,15 @@ const MobileNavigation = () => {
       onClick={() => dispatch(closeModal())}
       className="fixed top-0 right-0 left-0 bottom-0 z-20 bg-black/60"
     >
-      <ul className="absolute top-20 right-0 h-3/4 overflow-y-scroll bg-white text-black w-56 rounded-lg px-3 py-2 space-y-3">
+      <ul className="absolute top-20 right-0 h-3/4 overflow-y-scroll bg-white text-black w-3/4 rounded-lg px-3 py-2 space-y-3">
         <li>
           <Link to="/" className="block text-lg font-bold">
-            Home
+            Home 🏠
           </Link>
         </li>
         <li className="h-[1px] bg-gray-100 rounded-full"></li>
         <li>
-          <span className="block text-lg font-bold">New Releases</span>
+          <span className="block text-lg font-bold">New Releases 🆕</span>
         </li>
         <li>
           <Link to="/discover/last-30-days" className="block">
@@ -51,7 +51,7 @@ const MobileNavigation = () => {
 
         <li>
           <Link to="/games" className="block text-lg font-bold">
-            Browse Games
+            Browse Games 🔎
           </Link>
         </li>
         <li>
@@ -73,7 +73,7 @@ const MobileNavigation = () => {
         <li className=" h-[1px] bg-gray-100 rounded-full"></li>
 
         <li>
-          <span className="block text-lg font-bold">Genres</span>
+          <span className="block text-lg font-bold">Genres 📚</span>
         </li>
         {genres.map((item, index) => (
           <li key={index}>

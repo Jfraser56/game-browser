@@ -34,10 +34,15 @@ const Discover = () => {
     },
   };
 
+  const thisYear = `${new Date(new Date().getFullYear(), 0, 1)
+    .toJSON()
+    .slice(0, 10)},${new Date().toJSON().slice(0, 10)}`;
+
   useEffect(() => {
-    //clear the store
+    //clear the store before submitting new request
     dispatch(resetStore());
 
+    //update release date depending on which discover page user is on
     if (pageData[id] || !id) {
       if (id) {
         dispatch(updateReleaseDate(pageData[id].dateFilter));
@@ -55,7 +60,10 @@ const Discover = () => {
 
   //Fetch here
   useEffect(() => {
-    if (releaseDate) {
+    if (
+      (id && releaseDate === pageData[id].dateFilter) ||
+      releaseDate === thisYear
+    ) {
       dispatch(fetchGames({ platforms, orderBy, releaseDate }));
     }
   }, [platforms, orderBy, releaseDate]);
@@ -63,7 +71,7 @@ const Discover = () => {
   return pageData[id] || !id ? (
     <div>
       <h1 className="text-4xl text-center md:text-7xl md:text-left font-bold text-white">
-        {id ? pageData[id].title : "Best of 2022"}
+        {id ? pageData[id].title : "Best of 2022 🎉"}
       </h1>
       <FilterBar
         orderByFilter={true}

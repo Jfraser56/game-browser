@@ -15,6 +15,7 @@
   position: relative;
   width: 80px;
   height: 80px;
+  transform: scale(1.5);
 }
 .loader-grid div {
   position: absolute;
@@ -84,6 +85,7 @@
   position: relative;
   width: 80px;
   height: 80px;
+  transform: scale(1.5);
 }
 .loader-pulse div {
   position: absolute;

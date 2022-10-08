@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
-  updateOrderBy,
-  updatePlatforms,
+  updateOrderByWithFilterBar,
+  updatePlatformsWithFilterBar,
   updateReleaseDate,
 } from "../../features/fetchedData/fetchedDataSlice";
 
@@ -20,7 +20,9 @@ const FilterBar = ({ orderByFilter, platformFilter, releaseDateFilter }) => {
           <label className="label">Order by:</label>
           <select
             id="order-by"
-            onChange={(e) => dispatch(updateOrderBy(e.target.value))}
+            onChange={(e) =>
+              dispatch(updateOrderByWithFilterBar(e.target.value))
+            }
             value={orderBy}
             className="select select-bordered select-sm w-full md:w-48 outline-none "
           >
@@ -36,18 +38,20 @@ const FilterBar = ({ orderByFilter, platformFilter, releaseDateFilter }) => {
           <label className="label">Platforms</label>
           <select
             id="platforms"
-            onChange={(e) => dispatch(updatePlatforms(e.target.value))}
+            onChange={(e) =>
+              dispatch(updatePlatformsWithFilterBar(e.target.value))
+            }
             value={platforms}
             className="select select-bordered select-sm w-full md:w-48 outline-none "
           >
             <option disabled value="">
               Platforms
             </option>
-            <option value="playstation">Playstation</option>
-            <option value="xbox">Xbox</option>
-            <option value="pc">PC</option>
-            <option value="nintendo">Nintendo</option>
-            <option value="all">All</option>
+            <option value="187,18,16,15,27">Playstation</option>
+            <option value="186,1,14,80">Xbox</option>
+            <option value="4">PC</option>
+            <option value="7,8,10,11,83">Nintendo</option>
+            <option value="187,18,16,15,27,186,1,14,80,4,7,8,83,11">All</option>
           </select>
         </div>
       )}

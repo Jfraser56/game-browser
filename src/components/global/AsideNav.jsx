@@ -47,7 +47,7 @@ const AsideNav = () => {
   ];
 
   return (
-    <aside className="hidden lg:block w-[15rem] py-8 px-6">
+    <aside className="hidden lg:block w-[18rem] py-8 px-6">
       <ul className="space-y-4 text-white">
         <li>
           <Link

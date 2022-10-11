@@ -14,6 +14,7 @@ const GamesCard = ({ game }) => {
   const navigate = useNavigate();
 
   const {
+    id,
     background_image,
     name,
     metacritic,
@@ -28,7 +29,6 @@ const GamesCard = ({ game }) => {
       setPlatforms((prev) => [...prev, cur.platform.id]);
     });
 
-    releaseDate.current = released;
     releaseDate.current = new Date(released).toUTCString().slice(5, 16);
   }, [store]);
 
@@ -70,7 +70,7 @@ const GamesCard = ({ game }) => {
           <header className="space-y-2">
             <div>
               <h1
-                onClick={() => navigate("/game/stray")}
+                onClick={() => navigate(`/game/${id}`)}
                 className="inline-block font-bold text-xl text-white hover:opacity-50 cursor-pointer"
               >
                 {name}

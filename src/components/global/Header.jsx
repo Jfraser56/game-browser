@@ -9,7 +9,7 @@ const Header = () => {
   const { isOpen } = useSelector((store) => store.modal);
 
   return (
-    <nav className="navbar bg-transparent p-4 pb-8">
+    <nav className="navbar bg-transparent p-4 pb-8 border-b border-white/30">
       <div className="navbar-start flex-1">
         <Link to={"/"}>
           <h1 className="text-md p-2 lg:text-2xl text-white font-bold tracking-wider">

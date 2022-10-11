@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FilterBar from "../components/shared/FilterBar";
 import { useParams } from "react-router-dom";
@@ -14,6 +14,7 @@ import {
 } from "../features/fetchedData/fetchedDataSlice";
 
 const Games = () => {
+  const isOnAllGamesPage = useRef(false);
   const { filter, id } = useParams();
 
   const dispatch = useDispatch();
@@ -80,6 +81,14 @@ const Games = () => {
         }
         return;
     }
+
+    //Fetches game data on "All Games Page"
+    if (!releaseDate && !genres && !stores && !developers) {
+      isOnAllGamesPage.current = true;
+    }
+    if (!filter && isOnAllGamesPage.current) {
+      fetchGameData();
+    }
   }, [orderBy, platforms, releaseDate, genres, stores, developers]);
 
   return (
@@ -89,7 +98,9 @@ const Games = () => {
       </h1>
       <FilterBar
         orderByFilter={true}
-        platformFilter={filter === "developers" || filter === "genres"}
+        platformFilter={
+          filter === "developers" || filter === "genres" || !filter
+        }
         releaseDateFilter={true}
       />
       <CardGrid />

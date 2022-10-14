@@ -568,3 +568,147 @@ export const dummyData = {
   description_raw:
     "The Golden Order has been broken.\n\nRise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.\n\nIn the Lands Between ruled by Queen Marika the Eternal, the Elden Ring, the source of the Erdtree, has been shattered.\n\nMarika's offspring, demigods all, claimed the shards of the Elden Ring known as the Great Runes, and the mad taint of their newfound strength triggered a war: The Shattering. A war that meant abandonment by the Greater Will.\n\nAnd now the guidance of grace will be brought to the Tarnished who were spurned by the grace of gold and exiled from the Lands Between. Ye dead who yet live, your grace long lost, follow the path to the Lands Between beyond the foggy sea to stand before the Elden Ring.",
 };
+
+export const screenshotDummy = {
+  count: 6,
+  next: null,
+  previous: null,
+  results: [
+    {
+      id: 3390807,
+      image:
+        "https://media.rawg.io/media/screenshots/a95/a959b88387c0093242a5c27dad481a78.jpg",
+      width: 1920,
+      height: 1080,
+      is_deleted: false,
+    },
+    {
+      id: 3390808,
+      image:
+        "https://media.rawg.io/media/screenshots/7fe/7feca7f4fe09a3ce2d906d73f1dbbf84.jpg",
+      width: 1920,
+      height: 1080,
+      is_deleted: false,
+    },
+    {
+      id: 3390809,
+      image:
+        "https://media.rawg.io/media/screenshots/5cd/5cd7bf0302ac24f1c8fb6ce2c21c173e.jpg",
+      width: 1920,
+      height: 1080,
+      is_deleted: false,
+    },
+    {
+      id: 3390810,
+      image:
+        "https://media.rawg.io/media/screenshots/0cf/0cf0614b14c5440d2ba62c5fcda83929.jpg",
+      width: 1920,
+      height: 1080,
+      is_deleted: false,
+    },
+    {
+      id: 3390811,
+      image:
+        "https://media.rawg.io/media/screenshots/b2c/b2c6020fb03c349a8e9528291f166b87_rkiWwUQ.jpg",
+      width: 1920,
+      height: 1080,
+      is_deleted: false,
+    },
+    {
+      id: 3390812,
+      image:
+        "https://media.rawg.io/media/screenshots/a86/a86bc8f003efcbe42a00d05f77a3ae33.jpg",
+      width: 1920,
+      height: 1080,
+      is_deleted: false,
+    },
+  ],
+};
+
+export const dummyAchievements = {
+  count: 14,
+  next: "https://api.rawg.io/api/games/stray-2/achievements?key=3e043084aaf14e91969274be90eb2cb6&page=2",
+  previous: null,
+  results: [
+    {
+      id: 1630940,
+      name: "All Done",
+      description: "Unlock all trophies.",
+      image:
+        "https://media.rawg.io/media/achievements/fd8/fd863ba8d9ce83d8d65fe609e9d09b4d.jpg",
+      percent: "2.58",
+    },
+    {
+      id: 1630950,
+      name: "I am Speed",
+      description: "Complete the game in less than 2 hours.",
+      image:
+        "https://media.rawg.io/media/achievements/afe/afe81d2d0e300b7725080d7f8ec5ed17.jpg",
+      percent: "8.86",
+    },
+    {
+      id: 1630964,
+      name: "Territory",
+      description: "Scratch in every chapter.",
+      image:
+        "https://media.rawg.io/media/achievements/d8c/d8c0da111b4fc7e0595a1610048d73e2.jpg",
+      percent: "14.35",
+    },
+    {
+      id: 1630963,
+      name: "Badges",
+      description: "Collect all badges.",
+      image:
+        "https://media.rawg.io/media/achievements/7d4/7d468c1199f7d7ac03dfe4898fba1406.jpg",
+      percent: "14.56",
+    },
+    {
+      id: 1630943,
+      name: "Productive Day",
+      description: "Sleep for more than one hour.",
+      image:
+        "https://media.rawg.io/media/achievements/37f/37fa2cace3516b9487d37203ac2a780e.jpg",
+      percent: "16.24",
+    },
+    {
+      id: 1630962,
+      name: "Télé à chat",
+      description: "Browse through all of the TV channels.",
+      image:
+        "https://media.rawg.io/media/achievements/d98/d989380cc6b292046da43756cebe27a1.jpg",
+      percent: "33.97",
+    },
+    {
+      id: 1630947,
+      name: "No More Lives",
+      description: "Die 9 times.",
+      image:
+        "https://media.rawg.io/media/achievements/4f6/4f60ff7ef23c654d11941563e5384cc8.jpg",
+      percent: "35.34",
+    },
+    {
+      id: 1630944,
+      name: "Boom Chat Kalaka",
+      description: "Dunk the basketball.",
+      image:
+        "https://media.rawg.io/media/achievements/278/2782d5b374da47a3d53ef9b3d7152c39.jpg",
+      percent: "36.92",
+    },
+    {
+      id: 1630957,
+      name: "Meowlody",
+      description: "Bring all the music sheets to Morusque.",
+      image:
+        "https://media.rawg.io/media/achievements/825/82572005e323c0c7a0364dec929d0371.jpg",
+      percent: "41.56",
+    },
+    {
+      id: 1630960,
+      name: "Cat's best friend",
+      description: "Nuzzle up against 5 robots.",
+      image:
+        "https://media.rawg.io/media/achievements/1c7/1c7cde60ba6120db818ff7d6edf89970.jpg",
+      percent: "46.62",
+    },
+  ],
+};

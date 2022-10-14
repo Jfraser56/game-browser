@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/global/Header";
 import Main from "./components/global/Main";
 import AsideNav from "./components/global/AsideNav";
+import Footer from "./components/global/Footer";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <AsideNav />
         <Main />
       </section>
+      <Footer />
     </div>
   );
 }

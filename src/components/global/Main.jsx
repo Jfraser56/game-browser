@@ -10,7 +10,7 @@ import NotFound from "../../pages/NotFound";
 
 const Main = () => {
   return (
-    <div className="hide-scrollbar w-full h-auto lg:h-[60rem] px-4 pt-8 md:px-9 lg:w-[calc(100%_-_15rem)] overflow-y-scroll">
+    <div className="hide-scrollbar w-full h-auto lg:h-[60rem] px-4 py-8 md:px-9 lg:w-[calc(100%_-_15rem)] overflow-y-scroll">
       <Routes>
         <Route path="/" element={<Discover />} />
         <Route path="/discover" element={<Discover />} />

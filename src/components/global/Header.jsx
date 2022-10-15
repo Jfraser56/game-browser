@@ -1,9 +1,9 @@
-import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import MobileNavigation from "../MobileNavigation";
 import { openModal } from "../../features/modal/modalSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { FaGithub, FaLaptop, FaRegFileAlt } from "react-icons/fa";
+import SearchBar from "../SearchBar";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -11,25 +11,15 @@ const Header = () => {
 
   return (
     <nav className="flex justify-between items-center w-screen space-x-4 bg-transparent p-4 pb-8 border-b border-white/30">
-      <div className="">
+      <div className="hidden md:block">
         <Link to={"/"}>
           <h1 className="text-md p-2 lg:text-2xl text-white font-bold tracking-wider">
             GAME.REV
           </h1>
         </Link>
       </div>
-      <div className="flex-auto">
-        <div className="input-group input-group-xs lg:input-group-lg">
-          <span className="bg-white/20">
-            <FiSearch />
-          </span>
-          <input
-            className="input w-full input-sm lg:input-md bg-white/20 focus:bg-white focus:text-black"
-            type="text"
-            placeholder="Search for games"
-          />
-        </div>
-      </div>
+      <SearchBar />
+
       <div className="hidden lg:flex space-x-2 px-5">
         <a
           target="_blank"

@@ -70,12 +70,12 @@ const GamesCard = ({ game }) => {
           </div>
           <header className="space-y-2">
             <div>
-              <h1
-                onClick={() => navigate(`/game/${id}`)}
+              <Link
+                to={`/game/${id}`}
                 className="inline-block font-bold text-xl text-white hover:opacity-50 cursor-pointer"
               >
                 {name}
-              </h1>
+              </Link>
             </div>
             {genres.map((cur, index) => (
               <Link

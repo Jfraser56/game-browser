@@ -63,22 +63,22 @@ const Games = () => {
     //Makes sure store has genres, platforms, stores, or developer data before fetch request is sent
     switch (filter) {
       case "genres":
-        if (genres) {
+        if (genres && id === genres) {
           fetchGameData();
         }
         return;
       case "platforms":
-        if (platforms) {
+        if (platforms && id === platforms) {
           fetchGameData();
         }
         return;
       case "stores":
-        if (stores) {
+        if (stores && id === stores) {
           fetchGameData();
         }
         return;
       case "developers":
-        if (developers) {
+        if (developers && id === developers) {
           fetchGameData();
         }
         return;

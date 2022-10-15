@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { dummyData, screenshotDummy, dummyAchievements } from "../../dummydata";
 import {
   setAppBackgroundImage,
   setParentPlatforms,
@@ -35,6 +34,7 @@ const Game = () => {
     game,
     screenshots,
     achievements,
+    loading,
   } = useSelector((store) => store.gameDetails);
 
   //Fetch game data
@@ -50,7 +50,7 @@ const Game = () => {
       dispatch(fetchScreenshots(id));
       dispatch(fetchAchievements(id));
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (game) {
@@ -93,7 +93,7 @@ const Game = () => {
     }
   }, [game]);
 
-  return game ? (
+  return game && !loading ? (
     <div className="flex flex-col lg:flex-row">
       <main className="w-full mb-8 lg:w-1/2 lg:m-0 lg:pr-4">
         <nav className="text-xs font-light text-white/50 tracking-wider mb-8">
@@ -246,11 +246,7 @@ const Game = () => {
             {game.genres.map((cur, index) => (
               <span key={index}>
                 <Link
-                  to={`${
-                    cur.slug !== "role-playing-games-rpg"
-                      ? `/games/genres/${cur.slug}`
-                      : "/games/genres/RPG"
-                  }`}
+                  to={`${`/games/genres/${cur.slug}`}`}
                   className="transition underline whitespace-nowrap hover:text-white/30"
                 >
                   {cur.name}

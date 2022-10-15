@@ -6,14 +6,19 @@ const MobileNavigation = () => {
   const dispatch = useDispatch();
 
   const genres = [
-    { url: "/games/action", label: "Action" },
-    { url: "/games/adventure", label: "Adventure" },
-    { url: "/games/puzzle", label: "Puzzle" },
-    { url: "/games/racing", label: "Racing" },
-    { url: "/games/role-playing-games", label: "RPG" },
-    { url: "/games/shooters", label: "Shooter" },
-    { url: "/games/sports-games", label: "Sports" },
-    { url: "/games/strategy-games", label: "Strategy" },
+    { url: "/games/genres/action", label: "Action" },
+    { url: "/games/genres/adventure", label: "Adventure" },
+    { url: "/games/genres/puzzle", label: "Puzzle" },
+    { url: "/games/genres/racing", label: "Racing" },
+    { url: "/games/genres/role-playing-games-rpg", label: "RPG" },
+    { url: "/games/genres/shooters", label: "Shooter" },
+    { url: "/games/genres/sports-games", label: "Sports" },
+    { url: "/games/genres/casual", label: "Casual" },
+    { url: "/games/genres/indie", label: "Indie" },
+    {
+      url: "/games/genres/massively-multiplayer",
+      label: "Massively Multiplayer",
+    },
   ];
 
   return (

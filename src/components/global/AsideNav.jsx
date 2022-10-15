@@ -40,8 +40,8 @@ const AsideNav = () => {
     { icon: adventureIcon, url: "games/genres/adventure", type: "Adventure" },
     { icon: puzzleIcon, url: "games/genres/puzzle", type: "Puzzle" },
     { icon: racingIcon, url: "games/genres/racing", type: "Racing" },
-    { icon: rpgIcon, url: "games/genres/RPG", type: "RPG" },
-    { icon: shooterIcon, url: "games/genres/shooters", type: "Shooters" },
+    { icon: rpgIcon, url: "games/genres/role-playing-games-rpg", type: "RPG" },
+    { icon: shooterIcon, url: "games/genres/shooter", type: "Shooter" },
     { icon: sportsIcon, url: "games/genres/sports", type: "Sports" },
     { icon: strategyIcon, url: "games/genres/strategy", type: "Strategy" },
   ];

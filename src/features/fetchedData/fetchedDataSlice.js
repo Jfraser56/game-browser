@@ -56,7 +56,7 @@ const fetchedDataSlice = createSlice({
       state.releaseDate = payload;
     },
     updateGenres: (state, { payload }) => {
-      state.genres = genreIDs[payload];
+      state.genres = payload;
     },
     updateStoresByID: (state, { payload }) => {
       state.stores = payload;

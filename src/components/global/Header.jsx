@@ -3,21 +3,22 @@ import { Link } from "react-router-dom";
 import MobileNavigation from "../MobileNavigation";
 import { openModal } from "../../features/modal/modalSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { FaGithub, FaLaptop, FaRegFileAlt } from "react-icons/fa";
 
 const Header = () => {
   const dispatch = useDispatch();
   const { isOpen } = useSelector((store) => store.modal);
 
   return (
-    <nav className="navbar bg-transparent p-4 pb-8 border-b border-white/30">
-      <div className="navbar-start flex-1">
+    <nav className="flex justify-between items-center w-screen space-x-4 bg-transparent p-4 pb-8 border-b border-white/30">
+      <div className="">
         <Link to={"/"}>
           <h1 className="text-md p-2 lg:text-2xl text-white font-bold tracking-wider">
             GAME.REV
           </h1>
         </Link>
       </div>
-      <div className="navbar-center flex-auto">
+      <div className="flex-auto">
         <div className="input-group input-group-xs lg:input-group-lg">
           <span className="bg-white/20">
             <FiSearch />
@@ -29,19 +30,31 @@ const Header = () => {
           />
         </div>
       </div>
-      <div className="navbar-end flex-1 hidden lg:flex justify-end space-x-5 px-5">
-        <a className="btn btn-sm" href="#">
-          Github
+      <div className="hidden lg:flex space-x-2 px-5">
+        <a
+          target="_blank"
+          className="btn btn-sm bg-gray-600 text-white"
+          href="https://github.com/Jfraser56/game-browser"
+        >
+          <FaGithub className="mr-2" size="1.2rem" /> Github
         </a>
-        <a className="btn btn-sm" href="#">
-          Portfolio
+        <a
+          target="_blank"
+          className="btn btn-sm bg-gray-600 text-white"
+          href="https://jfraser56.github.io/"
+        >
+          <FaLaptop className="mr-2" size="1.2rem" /> Portfolio
         </a>
-        <a className="btn btn-sm" href="#">
-          Resume
+        <a
+          target="_blank"
+          className="btn btn-sm bg-gray-600 text-white"
+          href="https://docs.google.com/document/d/19qplhPCRIaLX_ohwR73dMNcn5UXhG7bBQUOf9YpncbY/edit"
+        >
+          <FaRegFileAlt className="mr-2" size="1.2rem" /> Resume
         </a>
       </div>
       {/* Only on Small Screens */}
-      <div className="navbar-end flex-1 lg:hidden">
+      <div className="lg:hidden">
         <div
           onClick={() => dispatch(openModal())}
           tabIndex="0"

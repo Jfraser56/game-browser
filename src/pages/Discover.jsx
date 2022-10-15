@@ -67,7 +67,7 @@ const Discover = () => {
   useEffect(() => {
     if (
       (id && releaseDate === pageData[id].dateFilter) ||
-      releaseDate === thisYear
+      (!id && releaseDate === thisYear)
     ) {
       dispatch(fetchGames({ platforms, orderBy, releaseDate }));
     }

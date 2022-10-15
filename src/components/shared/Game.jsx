@@ -24,6 +24,7 @@ const Game = () => {
   });
 
   const releaseDate = useRef();
+  const parentPlatformsRef = useRef([]);
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -53,9 +54,15 @@ const Game = () => {
 
   useEffect(() => {
     if (game) {
+      parentPlatformsRef.current = [];
       game.parent_platforms.forEach((cur) => {
-        dispatch(setParentPlatforms(cur.platform.id));
+        parentPlatformsRef.current = [
+          ...parentPlatformsRef.current,
+          cur.platform.id,
+        ];
       });
+
+      dispatch(setParentPlatforms(parentPlatformsRef.current));
 
       game.platforms.forEach((cur) => {
         if (cur.platform.id === 4 && Object.keys(cur.requirements).length) {

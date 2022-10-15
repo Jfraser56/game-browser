@@ -4,6 +4,7 @@ import { SiNintendo } from "react-icons/si";
 import { FaPlaystation, FaXbox, FaWindows } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { genreIDs } from "../../features/fetchedData/API_IDs";
 
 const GamesCard = ({ game }) => {
   const store = useSelector((store) => store.fetchedData);
@@ -78,11 +79,7 @@ const GamesCard = ({ game }) => {
             </div>
             {genres.map((cur, index) => (
               <Link
-                to={`${
-                  cur.slug !== "role-playing-games-rpg"
-                    ? `/games/genres/${cur.slug}`
-                    : "/games/genres/RPG"
-                }`}
+                to={`/games/genres/${cur.slug}`}
                 className="badge badge-sm badge-outline hover:badge-outline hover:badge-primary text-white mr-2"
                 key={index}
               >

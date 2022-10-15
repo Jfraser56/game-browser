@@ -12,6 +12,7 @@ import {
   updateDevelopersByID,
   resetStore,
 } from "../features/fetchedData/fetchedDataSlice";
+import { genreIDs } from "../features/fetchedData/API_IDs";
 
 const Games = () => {
   const isOnAllGamesPage = useRef(false);
@@ -102,7 +103,7 @@ const Games = () => {
         ref={scrollRef}
         className="text-4xl text-center md:text-7xl md:text-left font-bold text-white"
       >
-        {id ? id[0].toUpperCase() + id.slice(1) : "Games"}
+        {id ? genreIDs[id] : "Games"}
       </h1>
       <FilterBar
         orderByFilter={true}

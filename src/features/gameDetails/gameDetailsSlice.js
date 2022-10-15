@@ -52,7 +52,7 @@ export const gameDetailsSlice = createSlice({
   initialState,
   reducers: {
     setParentPlatforms: (state, { payload }) => {
-      state.parentPlatforms = [...state.parentPlatforms, payload];
+      state.parentPlatforms = payload;
     },
     setRequirements: (state, { payload }) => {
       state.requirements = payload;
@@ -111,6 +111,7 @@ export const {
   setRequirements,
   setRating,
   toggleViewingScreenshot,
+  resetStore,
 } = gameDetailsSlice.actions;
 
 export default gameDetailsSlice.reducer;

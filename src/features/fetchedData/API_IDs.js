@@ -7,12 +7,18 @@ export const platformIDs = {
 };
 
 export const genreIDs = {
-  action: "action",
-  adventure: "adventure",
-  puzzle: "puzzle",
-  racing: "racing",
-  RPG: "role-playing-games-rpg",
-  shooters: "shooter",
-  sports: "sports",
-  strategy: "strategy",
+  action: "Action",
+  adventure: "Adventure",
+  puzzle: "Puzzle",
+  racing: "Racing",
+  "role-playing-games-rpg": "RPG",
+  shooter: "Shooter",
+  sports: "Sports",
+  strategy: "Strategy",
+  indie: "Indie",
+  casual: "Casual",
+  simulation: "Simulation",
+  arcade: "Arcade",
+  platformer: "Platformer",
+  "massively-multiplayer": "Massively Multiplayer",
 };

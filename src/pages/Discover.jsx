@@ -1,7 +1,7 @@
 import FilterBar from "../components/shared/FilterBar";
 import CardGrid from "../components/shared/CardGrid";
 import { Navigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   updateReleaseDate,
@@ -11,6 +11,7 @@ import {
 
 const Discover = () => {
   const { id } = useParams();
+  const scrollRef = useRef();
 
   const dispatch = useDispatch();
   const { orderBy, platforms, releaseDate } = useSelector(
@@ -58,6 +59,10 @@ const Discover = () => {
     }
   }, [id]);
 
+  const scrollToTop = () => {
+    scrollRef.current.scrollIntoView();
+  };
+
   //Fetch here
   useEffect(() => {
     if (
@@ -70,7 +75,10 @@ const Discover = () => {
 
   return pageData[id] || !id ? (
     <div>
-      <h1 className="text-4xl text-center md:text-7xl md:text-left font-bold text-white">
+      <h1
+        ref={scrollRef}
+        className="text-4xl text-center md:text-7xl md:text-left font-bold text-white"
+      >
         {id ? pageData[id].title : "Best of 2022 🎉"}
       </h1>
       <FilterBar
@@ -78,7 +86,7 @@ const Discover = () => {
         platformFilter={true}
         releaseDateFilter={false}
       />
-      <CardGrid />
+      <CardGrid scrollToTop={scrollToTop} />
     </div>
   ) : (
     <Navigate to="/not-found" />

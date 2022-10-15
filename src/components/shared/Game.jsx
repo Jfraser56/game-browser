@@ -1,22 +1,23 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dummyData, screenshotDummy, dummyAchievements } from "../../dummydata";
-import { setAppBackgroundImage } from "../../features/appBackground/appBackgroundSlice";
-import { FaPlaystation, FaXbox, FaWindows, FaEllipsisH } from "react-icons/fa";
+import {
+  setAppBackgroundImage,
+  setParentPlatforms,
+  setRequirements,
+  setRating,
+  fetchGameDetails,
+  fetchScreenshots,
+  fetchAchievements,
+} from "../../features/gameDetails/gameDetailsSlice";
+import { FaPlaystation, FaXbox, FaWindows } from "react-icons/fa";
 import { SiNintendo } from "react-icons/si";
 import { AiFillCamera, AiOutlineEllipsis } from "react-icons/ai";
 import LoaderGrid from "../LoaderGrid";
 
 const Game = () => {
-  //Put into a useReducer
-  const [game, setGame] = useState();
-  const [screenshots, setScreenshots] = useState();
-  const [achievements, setAchievements] = useState();
-  const [parentPlatforms, setParentPlatforms] = useState([]);
-  const [requirements, setRequirements] = useState();
-  const [rating, setRating] = useState();
   const [showMore, setShowMore] = useState({
     fullDesc: false,
     viewRequirements: false,
@@ -26,62 +27,58 @@ const Game = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const {
+    parentPlatforms,
+    requirements,
+    rating,
+    game,
+    screenshots,
+    achievements,
+  } = useSelector((store) => store.gameDetails);
 
   //Fetch game data
   useEffect(() => {
-    const fetchSingularGame = async () => {
-      const gameDetails = await axios(
-        `https://api.rawg.io/api/games/${id}?key=${process.env.REACT_APP_GAMELIB_API_KEY}`
-      );
-
-      setGame(gameDetails.data);
-    };
-
-    const fetchScreenshotsOrAchievements = async (param) => {
-      const moreGameDetails = await axios(
-        `https://api.rawg.io/api/games/${id}/${param}?key=${process.env.REACT_APP_GAMELIB_API_KEY}`
-      );
-
-      switch (param) {
-        case "screenshots":
-          setScreenshots(moreGameDetails.data.results);
-          return;
-        case "achievements":
-          setAchievements(moreGameDetails.data.results);
-          return;
+    if (game) {
+      if (game.slug !== id && game.id !== +id) {
+        dispatch(fetchGameDetails(id));
+        dispatch(fetchScreenshots(id));
+        dispatch(fetchAchievements(id));
       }
-    };
-
-    fetchSingularGame();
-    fetchScreenshotsOrAchievements("screenshots");
-    fetchScreenshotsOrAchievements("achievements");
+    } else {
+      dispatch(fetchGameDetails(id));
+      dispatch(fetchScreenshots(id));
+      dispatch(fetchAchievements(id));
+    }
   }, []);
 
   useEffect(() => {
     if (game) {
       game.parent_platforms.forEach((cur) => {
-        setParentPlatforms((prev) => [...prev, cur.platform.id]);
+        dispatch(setParentPlatforms(cur.platform.id));
       });
 
       game.platforms.forEach((cur) => {
         if (cur.platform.id === 4 && Object.keys(cur.requirements).length) {
-          setRequirements({
-            minimum:
-              cur.requirements.minimum && cur.requirements.minimum.split("\n"),
-            recommended:
-              cur.requirements.recommended &&
-              cur.requirements.recommended.split("\n"),
-          });
+          dispatch(
+            setRequirements({
+              minimum:
+                cur.requirements.minimum &&
+                cur.requirements.minimum.split("\n"),
+              recommended:
+                cur.requirements.recommended &&
+                cur.requirements.recommended.split("\n"),
+            })
+          );
         }
       });
 
       releaseDate.current = new Date(game.released).toUTCString().slice(5, 16);
 
       if (game.ratings.length) {
-        console.log(game.ratings);
-
-        setRating(
-          game.ratings.reduce((a, b) => (a.percent > b.percent ? a : b))
+        dispatch(
+          setRating(
+            game.ratings.reduce((a, b) => (a.percent > b.percent ? a : b))
+          )
         );
       }
 
@@ -90,9 +87,9 @@ const Game = () => {
   }, [game]);
 
   return game ? (
-    <div className="flex">
-      <main className="w-1/2 pr-4">
-        <nav className="text-xs font-light text-white/30 tracking-wider mb-8">
+    <div className="flex flex-col lg:flex-row">
+      <main className="w-full mb-8 lg:w-1/2 lg:m-0 lg:pr-4">
+        <nav className="text-xs font-light text-white/50 tracking-wider mb-8">
           <Link className="transition hover:text-white" to="/discover">
             HOME
           </Link>{" "}
@@ -103,8 +100,8 @@ const Game = () => {
           / {game.name.toUpperCase()}
         </nav>
         <header className="mb-8">
-          <div className="flex space-x-5 items-center tracking-widest mb-8">
-            <div className="text-gray-700 px-3 text-sm bg-white rounded-md">
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-x-5 sm:items-center tracking-widest mb-8 whitespace-nowrap">
+            <div className="text-gray-700 px-3 text-sm bg-white rounded-md w-fit">
               {releaseDate.current}
             </div>
             <ul className="flex space-x-2">
@@ -141,10 +138,12 @@ const Game = () => {
               AVERAGE PLAYTIME: {game.playtime} HOURS{" "}
             </h4>
           </div>
-          <h1 className="text-6xl font-bold text-white mb-8">{game.name}</h1>
+          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-8">
+            {game.name}
+          </h1>
           <div className="flex items-center justify-start h-16 space-x-8">
             <div className="flex flex-col items-center justify-between h-full">
-              <h3 className="text-white font-semibold tracking-wider text-2xl">
+              <h3 className="text-white font-semibold tracking-wider text-xl lg:text-2xl">
                 {rating
                   ? rating.title[0].toUpperCase() + rating.title.slice(1)
                   : "No ratings 😴"}
@@ -249,7 +248,7 @@ const Game = () => {
                 >
                   {cur.name}
                 </Link>
-                {index < game.stores.length - 1 && ", "}
+                {index < game.genres.length - 1 && ", "}
               </span>
             ))}
           </div>
@@ -307,7 +306,7 @@ const Game = () => {
             </a>
           </div>
         </section>
-        {requirements && (
+        {Object.keys(requirements).length ? (
           <section className="relative">
             <div
               className={`${
@@ -380,11 +379,11 @@ const Game = () => {
               ></div>
             )}
           </section>
-        )}
+        ) : null}
       </main>
-      <aside className="w-1/2 mt-28 pl-4 border-l-[0.5px] border-gray-700">
+      <aside className="w-full pt-8 border-t-[0.5px] lg:w-1/2 lg:mt-28 lg:pl-4 lg:border-l-[0.5px] lg:border-t-0 border-gray-700">
         <div
-          className={`grid grid-cols-2 gap-3 w-fit  ${
+          className={`grid grid-cols-2 gap-3 w-fit mx-auto lg:mx-0  ${
             screenshots ? "h-fit mb-8" : "h-96"
           }`}
         >
@@ -394,7 +393,7 @@ const Game = () => {
                 index < 4 && (
                   <figure key={index}>
                     <img
-                      className="object-cover h-32 w-52 rounded-md"
+                      className="object-cover h-32 w-full rounded-md"
                       src={cur.image}
                       alt="screenshot of game"
                     />
@@ -402,19 +401,19 @@ const Game = () => {
                 )
             )}
           {screenshots && (
-            <button
-              type="button"
+            <Link
+              to={`/games/${id}/screenshots`}
               className="flex items-center justify-center transition mt-4 bg-base-100 px-4 py-2 text-white hover:bg-white hover:text-gray-700 rounded-sm text-sm col-span-2"
             >
               View all screenshots{" "}
               <AiFillCamera className="ml-2" size="1.2rem" />
-            </button>
+            </Link>
           )}
         </div>
         {achievements && achievements.length ? (
           <>
             <Link
-              to={`/games/${id}/screenshots`}
+              to={`/games/${id}/achievements`}
               className="transition text-white font-semibold text-2xl border-b hover:text-white/30 hover:border-white/30"
             >
               {game.name} Achievements

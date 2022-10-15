@@ -6,18 +6,20 @@ import Footer from "./components/global/Footer";
 import { useSelector } from "react-redux";
 
 function App() {
-  const { backgroundImage } = useSelector((store) => store.appBackground);
-
-  console.log("render");
+  const { backgroundImage, viewingScreenshot } = useSelector(
+    (store) => store.gameDetails
+  );
 
   return (
     <div
       style={{
         background:
           backgroundImage &&
-          `linear-gradient(rgba(20,20,20,0.75), rgba(20,20,20,1) 50%), url(${backgroundImage}) top/contain no-repeat`,
+          `linear-gradient(rgba(20,20,20,0.75), rgba(20,20,20,1) 40vw), url(${backgroundImage}) top/contain no-repeat`,
       }}
-      className="flex flex-col bg-primary-content"
+      className={`flex flex-col bg-primary-content ${
+        viewingScreenshot && "h-screen overflow-hidden"
+      }`}
     >
       <Header />
       <section className="h-full w-full flex">

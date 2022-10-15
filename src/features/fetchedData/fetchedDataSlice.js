@@ -31,6 +31,14 @@ export const fetchGames = createAsyncThunk(
   }
 );
 
+export const paginateFetch = createAsyncThunk(
+  "fetchedData/paginateFetch",
+  async (url) => {
+    const games = await axios(url);
+    return games.data;
+  }
+);
+
 const fetchedDataSlice = createSlice({
   name: "fetchedData",
   initialState,
@@ -80,6 +88,19 @@ const fetchedDataSlice = createSlice({
         state.error = false;
       })
       .addCase(fetchGames.rejected, (state, action) => {
+        state.loading = false;
+        state.gameData = [];
+        state.error = action.error.message;
+      })
+      .addCase(paginateFetch.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(paginateFetch.fulfilled, (state, action) => {
+        state.loading = false;
+        state.gameData = action.payload;
+        state.error = false;
+      })
+      .addCase(paginateFetch.rejected, (state, action) => {
         state.loading = false;
         state.gameData = [];
         state.error = action.error.message;

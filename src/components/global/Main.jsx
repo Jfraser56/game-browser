@@ -7,6 +7,8 @@ import Stores from "../../pages/Stores";
 import Developers from "../../pages/Developers";
 import Game from "../shared/Game";
 import NotFound from "../../pages/NotFound";
+import GameAchievements from "../../pages/GameAchievements";
+import GameScreenshots from "../../pages/GameScreenshots";
 
 const Main = () => {
   return (
@@ -18,6 +20,8 @@ const Main = () => {
         <Route path="/release-calendar" element={<Calendar />} />
         <Route path="/games" element={<Games />} />
         <Route path="/games/:filter/:id" element={<Games />} />
+        <Route path="/games/:id/achievements" element={<GameAchievements />} />
+        <Route path="/games/:id/screenshots" element={<GameScreenshots />} />
         <Route path="/platforms" element={<Platforms />} />
         <Route path="/stores" element={<Stores />} />
         <Route path="/developers" element={<Developers />} />

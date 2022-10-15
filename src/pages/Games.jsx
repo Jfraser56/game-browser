@@ -15,6 +15,7 @@ import {
 
 const Games = () => {
   const isOnAllGamesPage = useRef(false);
+  const scrollRef = useRef();
   const { filter, id } = useParams();
 
   const dispatch = useDispatch();
@@ -91,9 +92,16 @@ const Games = () => {
     }
   }, [orderBy, platforms, releaseDate, genres, stores, developers]);
 
+  const scrollToTop = () => {
+    scrollRef.current.scrollIntoView();
+  };
+
   return (
     <div>
-      <h1 className="text-4xl text-center md:text-7xl md:text-left font-bold text-white">
+      <h1
+        ref={scrollRef}
+        className="text-4xl text-center md:text-7xl md:text-left font-bold text-white"
+      >
         {id ? id[0].toUpperCase() + id.slice(1) : "Games"}
       </h1>
       <FilterBar
@@ -103,7 +111,7 @@ const Games = () => {
         }
         releaseDateFilter={true}
       />
-      <CardGrid />
+      <CardGrid scrollToTop={scrollToTop} />
     </div>
   );
 };

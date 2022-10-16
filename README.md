@@ -14,7 +14,7 @@
 * Develop a page specifically for browsing game platforms
 * Develop a page specifically for browsing game studios/developer teams
 
-Use `npm install` to download GAME.REV dependencies, however the API key is not included, therefore I reccomend just viewing the live app demo
+Use `npm install` to download GAME.REV dependencies, however the API key is not included, therefore I reccommend just viewing the live app demo
 
 [Live App](https://stellar-halva-039185.netlify.app)
 

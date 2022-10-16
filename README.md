@@ -1,46 +1,27 @@
-# Getting Started with Create React App and Redux
+# GAME.REV
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Browse the RAWG.io videogame database with this clone created with React.JS, and TailwindCSS.
 
-## Available Scripts
+### Features
+* Browse the top games of the year, last 30 days, or upcoming next week.
+* Filter games based on "platforms", "release dates", "genres", and filters like "popularity" or "average rating"
+* Search for specific games via the searchbar in the GAME.REV header
+* Detailed information on every game such as PC requirements, development studio, metacritic scores, screenshots, game achievements, etc...
 
-In the project directory, you can run:
+### Features to implement
+* Browse upcoming games via the game calendar tab. Will also include game filters based on what is already implemented
+* Refine the search filters. For example, instead of searching for "All Playstation games", search for "PS2 games" or "Xbox 360 games"
+* Develop a page specifically for browsing game platforms
+* Develop a page specifically for browsing game studios/developer teams
 
-### `npm start`
+Use `npm install` to download GAME.REV dependencies, however the API key is not included, therefore I reccomend just viewing the live app demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Live App](https://stellar-halva-039185.netlify.app)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Preview
 
-### `npm test`
+<img width="1496" alt="Screen Shot 2022-10-15 at 10 31 46 PM" src="https://user-images.githubusercontent.com/85974596/196015146-fa0c027d-3c08-4f01-969e-1260cb0c18a6.png">
+<img width="1497" alt="Screen Shot 2022-10-15 at 10 33 30 PM" src="https://user-images.githubusercontent.com/85974596/196015153-4dfb3e8f-9151-4a27-a603-7a8d71721b35.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+###### Developed 100% by John Fraser, with ReactJS. 
+###### Design inspired by [RAWG.io](https://rawg.io)

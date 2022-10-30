@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { SiNintendo } from "react-icons/si";
 import { FaPlaystation, FaXbox, FaWindows } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -11,8 +10,7 @@ const GamesCard = ({ game }) => {
 
   const [platforms, setPlatforms] = useState([]);
   const releaseDate = useRef();
-
-  const navigate = useNavigate();
+  const platformRef = useRef([]);
 
   const {
     id,
@@ -27,8 +25,11 @@ const GamesCard = ({ game }) => {
 
   useEffect(() => {
     parent_platforms.forEach((cur) => {
-      setPlatforms((prev) => [...prev, cur.platform.id]);
+      platformRef.current.push(cur.platform.id);
     });
+
+    setPlatforms(platformRef.current);
+    platformRef.current = [];
 
     releaseDate.current = new Date(released).toUTCString().slice(5, 16);
   }, [store]);

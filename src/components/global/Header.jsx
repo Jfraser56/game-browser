@@ -38,7 +38,7 @@ const Header = () => {
         <a
           target="_blank"
           className="btn btn-sm bg-gray-600 text-white"
-          href="https://docs.google.com/document/d/19qplhPCRIaLX_ohwR73dMNcn5UXhG7bBQUOf9YpncbY/edit"
+          href="https://drive.google.com/file/d/19qtWKI_p6Vtn8QyDEPoOMYArEV1UFQFc/view?usp=sharing"
         >
           <FaRegFileAlt className="mr-2" size="1.2rem" /> Resume
         </a>

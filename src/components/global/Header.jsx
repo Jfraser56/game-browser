@@ -31,7 +31,7 @@ const Header = () => {
         <a
           target="_blank"
           className="btn btn-sm bg-gray-600 text-white"
-          href="https://jfraser56.github.io/"
+          href="https://www.johnfraser.dev/"
         >
           <FaLaptop className="mr-2" size="1.2rem" /> Portfolio
         </a>

@@ -296,7 +296,7 @@ const Game = () => {
               {game.esrb_rating ? game.esrb_rating.name : "Not rated"}
             </span>
           </div>
-          <div>
+          <div className="break-words">
             <h5 className="text-xs text-white/30 tracking-widest mb-1">
               Website
             </h5>

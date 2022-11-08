@@ -17,7 +17,7 @@ function App() {
           backgroundImage &&
           `linear-gradient(rgba(20,20,20,0.75), rgba(20,20,20,1) 40vw), url(${backgroundImage}) top/contain no-repeat`,
       }}
-      className={`flex flex-col bg-primary-content ${
+      className={`flex flex-col bg-primary-content overflow-x-hidden ${
         viewingScreenshot && "h-screen overflow-hidden"
       }`}
     >
